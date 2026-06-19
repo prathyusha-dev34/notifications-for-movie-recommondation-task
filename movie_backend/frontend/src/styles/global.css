@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+/* 🌟 BLUE BACKGROUND */
+body{
+  background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+  color:white;
+}
+
+/* Layout */
+.app-layout{
+  display:flex;
+  min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+  width:260px;
+  height:100vh;
+  position:fixed;
+  left:0;
+  top:0;
+  background:#0b1b3a;
+  padding:25px;
+  box-shadow:4px 0 15px rgba(0,0,0,0.4);
+}
+
+.sidebar h2{
+  color:#38bdf8;
+  margin-bottom:30px;
+  font-size:28px;
+  font-weight:700;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar li{
+  margin-bottom:15px;
+}
+
+.sidebar li a{
+  text-decoration:none;
+  color:white;
+  display:block;
+  padding:12px 15px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.sidebar li a:hover{
+  background:#1e40af;
+}
+
+/* Main */
+.main-content{
+  margin-left:260px;
+  width:100%;
+  padding:30px;
+  background:transparent;
+}
+
+/* Navbar */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+.logo{
+  font-size:32px;
+  font-weight:700;
+}
+
+.logo span{
+  color:#93c5fd;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.profile img{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:2px solid #93c5fd;
+}
+
+/* Search */
+.search-bar{
+  display:flex;
+  gap:15px;
+  margin-bottom:40px;
+}
+
+.search-bar input{
+  flex:1;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#1e293b;
+  color:white;
+}
+
+.search-bar button{
+  padding:15px 25px;
+  border:none;
+  border-radius:12px;
+  background:#3b82f6;
+  color:white;
+  cursor:pointer;
+}
+
+/* Section */
+.section-title{
+  margin-bottom:25px;
+  font-size:32px;
+}
+
+/* Movies Grid */
+.movies-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:25px;
+}
+
+/* Movie Card */
+.movie-card{
+  background:#1e293b;
+  border-radius:18px;
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.movie-card:hover{
+  transform:translateY(-8px);
+}
+
+.movie-card img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+}
+
+.movie-info{
+  padding:18px;
+}
+
+.movie-info p{
+  color:#cbd5e1;
+}
+
+.genre{
+  color:#93c5fd;
+}
+
+/* Buttons */
+.fav-btn,
+.watch-btn,
+.review-btn,
+.remove-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:8px;
+  font-weight:600;
+}
+
+.fav-btn{ background:#ef4444; color:white; }
+.watch-btn{ background:#3b82f6; color:white; }
+.review-btn{ background:#10b981; color:white; }
+.remove-btn{ background:#dc2626; color:white; }
+
+.fav-btn:hover,
+.watch-btn:hover,
+.review-btn:hover,
+.remove-btn:hover{
+  opacity:.85;
+}
+
+/* Profile */
+.profile-page{
+  max-width:700px;
+  margin:auto;
+}
+
+.profile-card{
+  background:#1e293b;
+  padding:25px;
+  border-radius:15px;
+}
+
+.profile-card input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  margin-bottom:12px;
+  background:#0f172a;
+  color:white;
+}
+
+.profile-card button{
+  width:100%;
+  padding:12px;
+  background:#3b82f6;
+  border:none;
+  border-radius:10px;
+  color:white;
+  font-weight:600;
+}
+
+/* Collections Buttons */
+.collections-buttons{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+}
+
+.collections-buttons button{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  color:white;
+  transition:0.3s;
+}
+
+.collections-buttons button:hover{
+  transform:translateY(-2px);
+  opacity:0.9;
+}
+
+.collections-buttons .add{
+  background:#22c55e;
+}
+
+.collections-buttons .view{
+  background:#3b82f6;
+}
+
+.collections-buttons .delete{
+  background:#ef4444;
+}
