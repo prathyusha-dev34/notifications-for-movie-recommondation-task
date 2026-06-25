@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Watchlist.css";
+import "./watchlist.css";
 
-// ✅ IMPORTANT: change this in production later
 const API_BASE = "http://127.0.0.1:8000";
 
 function Watchlist() {
@@ -27,7 +26,7 @@ function Watchlist() {
 
       setMovies(response.data.watchlist || []);
     } catch (error) {
-      console.log("Fetch watchlist error:", error);
+      console.log(error);
     }
   };
 
@@ -45,9 +44,8 @@ function Watchlist() {
       );
 
       fetchWatchlist();
-      alert("Removed from watchlist");
     } catch (error) {
-      console.log("Remove error:", error);
+      console.log(error);
     }
   };
 
@@ -55,40 +53,22 @@ function Watchlist() {
     <div className="watchlist-page">
       <h1>🎬 My Watchlist</h1>
 
-      {movies.length === 0 ? (
-        <div className="empty-watchlist">
-          Your watchlist is empty.
-          <br />
-          Start adding movies to watch later.
-        </div>
-      ) : (
-        <div className="watchlist-grid">
-          {movies.map((movie) => (
-            <div className="watchlist-card" key={movie.id}>
-              <img
-                src={
-                  movie.poster && movie.poster !== "N/A"
-                    ? movie.poster
-                    : "https://via.placeholder.com/300x450?text=No+Image"
-                }
-                alt={movie.movie_title}
-              />
+      <div className="watchlist-grid">
+        {movies.map((movie) => (
+          <div className="watchlist-card" key={movie.id}>
+            <img src={movie.poster} alt={movie.movie_title} />
 
-              <div className="watchlist-info">
-                <h3>{movie.movie_title}</h3>
-                <p>{movie.genre}</p>
+            <div className="watchlist-info">
+              <h3>{movie.movie_title}</h3>
+              <p>{movie.genre}</p>
 
-                <button
-                  className="remove-btn"
-                  onClick={() => removeMovie(movie.id)}
-                >
-                  ❌ Remove
-                </button>
-              </div>
+              <button onClick={() => removeMovie(movie.id)}>
+                ❌ Remove
+              </button>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
