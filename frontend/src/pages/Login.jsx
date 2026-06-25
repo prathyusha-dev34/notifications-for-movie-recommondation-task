@@ -31,10 +31,12 @@ function Login() {
 
       // API Request
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/login",
-        formData
-      );
-
+       "https://notifications-for-movie-recommondation-djbw.onrender.com/auth/login",
+  {
+    email,
+    password,
+  }
+);
       // Store token
       localStorage.setItem(
         "token",
