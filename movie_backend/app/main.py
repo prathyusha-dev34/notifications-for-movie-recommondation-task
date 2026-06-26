@@ -22,11 +22,8 @@ origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 
-    # Old Vercel URL
-    "https://collections-movie-recommondation-ol.vercel.app",
-
-    # Current Vercel URL
-    "https://notifications-for-movie-recommondation-task-uupi-dlmbg3m54.vercel.app",
+    # Current Vercel Frontend
+    "https://notifications-for-movie-recommendation-task-uupi-7x9lcq4zu.vercel.app",
 ]
 
 app.add_middleware(
@@ -62,36 +59,4 @@ from app.routes.notifications import router as notifications_router
 app.include_router(auth.router)
 app.include_router(favorites.router)
 app.include_router(history.router)
-app.include_router(dashboard.router)
-app.include_router(recommendations.router)
-app.include_router(movies.router)
-app.include_router(watchlist.router)
-app.include_router(reviews.router)
-app.include_router(profile.router)
-
-app.include_router(
-    collections_router,
-    prefix="/api/collections",
-    tags=["Collections"],
-)
-
-app.include_router(
-    notifications_router,
-    prefix="/api/notifications",
-    tags=["Notifications"],
-)
-
-app.include_router(
-    admin_router,
-    prefix="/api/admin",
-    tags=["Admin"],
-)
-
-# =========================
-# ROOT
-# =========================
-@app.get("/")
-def root():
-    return {
-        "message": "Movie Backend API is running 🚀"
-    }
+app.include_router
