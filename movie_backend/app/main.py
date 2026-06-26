@@ -9,7 +9,36 @@ from app.database import Base, engine
 app = FastAPI(title="Movie Backend API")
 
 # =========================
-# ROUTES IMPORTS
+# CREATE TABLES
+# =========================
+Base.metadata.create_all(bind=engine)
+
+# =========================
+# CORS SETUP
+# =========================
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+
+    # Old Vercel URL
+    "https://collections-movie-recommondation-ol.vercel.app",
+
+    # Current Vercel URL
+    "https://notifications-for-movie-recommondation-task-uupi-dlmbg3m54.vercel.app",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# =========================
+# IMPORT ROUTES
 # =========================
 from app.routes import (
     auth,
@@ -20,34 +49,12 @@ from app.routes import (
     movies,
     watchlist,
     reviews,
-    profile
+    profile,
 )
 
 from app.routes.collections import router as collections_router
 from app.routes.admin import router as admin_router
-from app.routes.notifications import router as notifications_router  # ✅ ADDED
-
-# =========================
-# CREATE TABLES
-# =========================
-Base.metadata.create_all(bind=engine)
-
-# =========================
-# CORS SETUP
-# =========================
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://collections-movie-recommondation-ol.vercel.app",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+from app.routes.notifications import router as notifications_router
 
 # =========================
 # ROUTES
@@ -62,36 +69,29 @@ app.include_router(watchlist.router)
 app.include_router(reviews.router)
 app.include_router(profile.router)
 
-# =========================
-# COLLECTIONS ROUTE
-# =========================
 app.include_router(
     collections_router,
     prefix="/api/collections",
-    tags=["Collections"]
+    tags=["Collections"],
 )
 
-# =========================
-# NOTIFICATIONS ROUTE (✅ FIXED)
-# =========================
 app.include_router(
     notifications_router,
     prefix="/api/notifications",
-    tags=["Notifications"]
+    tags=["Notifications"],
 )
 
-# =========================
-# ADMIN ROUTE
-# =========================
 app.include_router(
     admin_router,
     prefix="/api/admin",
-    tags=["Admin"]
+    tags=["Admin"],
 )
 
 # =========================
-# ROOT API
+# ROOT
 # =========================
 @app.get("/")
 def root():
-    return {"message": "Movie Backend API is running 🚀"}
+    return {
+        "message": "Movie Backend API is running 🚀"
+    }
