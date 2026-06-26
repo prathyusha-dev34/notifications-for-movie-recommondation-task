@@ -12,7 +12,7 @@ function Login() {
     try {
       // Backend URL (Render)
       const API_BASE =
-        "https://notifications-for-movie-recommondation-djbw.onrender.com";
+        "https://notifications-for-movie-recommendation-djbw.onrender.com";
 
       // FormData (IMPORTANT for FastAPI OAuth login)
       const formData = new FormData();
